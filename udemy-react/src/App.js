@@ -12,7 +12,9 @@ class App extends Component {
         </p>
 
       <div>
-        <Person />
+        <Person name="max" age="24" />
+        {/* can put content in between like below and access by props children  in person.js file*/}
+        <Person name="Aleena" age="24" > My Hobbies are: Playing Basketball! </Person>
       </div>
       </div>
     );
