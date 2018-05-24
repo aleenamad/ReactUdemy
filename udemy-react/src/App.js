@@ -50,6 +50,7 @@ class App extends Component {
           click = {this.switchNameHandler.bind(this, 'ugly')}/>
         {/* can put content in between like below and access by props children  in person.js file*/}
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} > My Hobbies are: Playing Basketball! </Person>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} changed={this.nameChangedHandler} > My Hobbies are: cleaning! </Person>
       </div>
       </div>
     );
