@@ -8,7 +8,9 @@ class App extends Component {
       { name: 'max', age: 28 },
       { name: 'aleena', age: 24},
       { name: 'mom', age: 55}
-    ]
+    ],
+    otherState: 'some other value',
+    showPersons: false,
   }
 
   switchNameHandler = (newName) => {
@@ -27,6 +29,13 @@ class App extends Component {
       { name: 'mother', age: 16},
     ]})
   }
+
+
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({showPersons: !doesShow});
+  };
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -41,9 +50,10 @@ class App extends Component {
         <p className="App-intro">
           hellooooooo
         </p>
-        <button  style={style} onClick = {() => this.switchNameHandler("maxxxxxx")}>Switch Name</button>
+        <button  style={style} onClick = { this.togglePersonsHandler} > Switch Name</button>
 
-      <div>
+      { this.state.showPersons === true ?
+        <div >
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
@@ -51,7 +61,8 @@ class App extends Component {
         {/* can put content in between like below and access by props children  in person.js file*/}
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} > My Hobbies are: Playing Basketball! </Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age} changed={this.nameChangedHandler} > My Hobbies are: cleaning! </Person>
-      </div>
+      </div> : null
+    }
       </div>
     );
   }
