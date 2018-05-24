@@ -11,11 +11,19 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     console.log('was clicked!');
     this.setState({persons: [
-      { name: 'maximillion', age: 28},
+      { name: newName, age: 28},
       { name: 'aleeeena', age: 35},
+      { name: 'mother', age: 16},
+    ]})
+  }
+
+  nameChangedHandler = (event) => {
+    this.setState({persons: [
+      { name: 'max', age: 28},
+      { name: event.target.value, age: 35},
       { name: 'mother', age: 16},
     ]})
   }
@@ -26,12 +34,15 @@ class App extends Component {
         <p className="App-intro">
           hellooooooo
         </p>
-        <button onClick = {this.switchNameHandler}>Switch Name</button>
+        <button onClick = {() => this.switchNameHandler("maxxxxxx")}>Switch Name</button>
 
       <div>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+          click = {this.switchNameHandler.bind(this, 'ugly')}/>
         {/* can put content in between like below and access by props children  in person.js file*/}
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} > My Hobbies are: Playing Basketball! </Person>
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} > My Hobbies are: Playing Basketball! </Person>
       </div>
       </div>
     );
