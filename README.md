@@ -1,3 +1,3 @@
 # ReactUdemy
 
-## Making Burger app
+## Making a basic app
